@@ -1,11 +1,11 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <report-views version="2.0" >
  <header>
-  <DateModified>2017-03-31T21:55:49</DateModified>
+  <DateModified>2017-03-31T23:55:51</DateModified>
   <ModuleName>TOP</ModuleName>
   <SummaryTimeStamp>Unknown</SummaryTimeStamp>
   <SavedFilePath>C:/Users/JM/Xilinx/Projekty/FFT/iseconfig/TOP.xreport</SavedFilePath>
-  <ImplementationReportsDirectory>C:/Users/JM/Xilinx/Projekty/FFT/WORK</ImplementationReportsDirectory>
+  <ImplementationReportsDirectory>C:/Users/JM/Xilinx/Projekty/FFT/WORK\</ImplementationReportsDirectory>
   <DateInitialized>2017-03-31T21:55:48</DateInitialized>
   <EnableMessageFiltering>false</EnableMessageFiltering>
  </header>

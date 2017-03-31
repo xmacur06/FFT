@@ -1,0 +1,14 @@
+# Output products list for <CORDIC_sqrt>
+CORDIC_sqrt.asy
+CORDIC_sqrt.gise
+CORDIC_sqrt.ngc
+CORDIC_sqrt.sym
+CORDIC_sqrt.vhd
+CORDIC_sqrt.vho
+CORDIC_sqrt.xco
+CORDIC_sqrt.xise
+CORDIC_sqrt\doc\cordic_ds249.pdf
+CORDIC_sqrt\doc\cordic_v4_0_vinfo.html
+CORDIC_sqrt_flist.txt
+CORDIC_sqrt_readme.txt
+CORDIC_sqrt_xmdf.tcl
