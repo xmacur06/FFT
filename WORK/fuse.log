@@ -1,0 +1,19 @@
+Running: fuse.exe -relaunch -intstyle "ise" -incremental -o "C:/Users/JM/Xilinx/Projekty/FFT/WORK/TB_ALU_convert_isim_beh.exe" -prj "C:/Users/JM/Xilinx/Projekty/FFT/WORK/TB_ALU_convert_beh.prj" "work.TB_ALU_convert" 
+ISim P.20131013 (signature 0x7708f090)
+Number of CPUs detected in this system: 4
+Turning on mult-threading, number of parallel sub-compilation jobs: 8 
+Determining compilation order of HDL files
+Parsing VHDL file "C:/Users/JM/Xilinx/Projekty/FFT/WORK/../SOURCES/ALU_convert.vhd" into library work
+Parsing VHDL file "C:/Users/JM/Xilinx/Projekty/FFT/WORK/../SOURCES/TB_ALU_convert.vhd" into library work
+Starting static elaboration
+Completed static elaboration
+Compiling package standard
+Compiling package std_logic_1164
+Compiling package numeric_std
+Compiling architecture behavioral of entity ALU_convert [\ALU_convert(32768)\]
+Compiling architecture behavior of entity tb_alu_convert
+Time Resolution for simulation is 1ps.
+Compiled 6 VHDL Units
+Built simulation executable C:/Users/JM/Xilinx/Projekty/FFT/WORK/TB_ALU_convert_isim_beh.exe
+Fuse Memory Usage: 35316 KB
+Fuse CPU Usage: 545 ms

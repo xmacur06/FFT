@@ -1,0 +1,2 @@
+vhdl work "../SOURCES/ALU_convert.vhd"
+vhdl work "../SOURCES/TB_ALU_convert.vhd"

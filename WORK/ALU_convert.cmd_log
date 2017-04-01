@@ -1,0 +1,2 @@
+vhdtdtfi -prj FFT -o C:/Users/JM/Xilinx/Projekty/FFT/WORK/ALU_convert.vhi -module ALU_convert -template C:/Programy/Xilinx/14.7/ISE_DS/ISE//data/vhdlinst.tft -deleteonerror -lib work ../SOURCES/ALU_convert.vhd 
+xst -intstyle ise -ifn "C:/Users/JM/Xilinx/Projekty/FFT/WORK/ALU_convert.xst" -ofn "C:/Users/JM/Xilinx/Projekty/FFT/WORK/ALU_convert.syr" 

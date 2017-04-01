@@ -1,0 +1,10 @@
+Command line:
+   TB_ALU_convert_isim_beh.exe
+     -simmode  gui
+     -simrunnum  0
+     -socket  52579
+
+Sat Apr 01 03:25:12 2017
+
+
+ Elaboration Time: 0.514803 sec

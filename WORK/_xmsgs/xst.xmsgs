@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- IMPORTANT: This is an internal file that has been generated
+     by the Xilinx ISE software.  Any direct editing or
+     changes made to this file may result in unpredictable
+     behavior or data corruption.  It is strongly advised that
+     users do not edit the contents of this file. -->
+<messages>
+<msg type="warning" file="Xst" num="1610" delta="new" >&quot;<arg fmt="%s" index="1">C:/Users/JM/Xilinx/Projekty/FFT/SOURCES/ALU_convert.vhd</arg>&quot; line <arg fmt="%d" index="2">57</arg>: Width mismatch. &lt;<arg fmt="%s" index="3">real_math_in</arg>&gt; has a width of <arg fmt="%d" index="4">31</arg> bits but assigned expression is <arg fmt="%d" index="5">62</arg>-bit wide.
+</msg>
+
+<msg type="warning" file="Xst" num="1610" delta="new" >&quot;<arg fmt="%s" index="1">C:/Users/JM/Xilinx/Projekty/FFT/SOURCES/ALU_convert.vhd</arg>&quot; line <arg fmt="%d" index="2">61</arg>: Width mismatch. &lt;<arg fmt="%s" index="3">imag_math_in</arg>&gt; has a width of <arg fmt="%d" index="4">31</arg> bits but assigned expression is <arg fmt="%d" index="5">62</arg>-bit wide.
+</msg>
+
+<msg type="warning" file="Xst" num="1306" delta="new" >Output &lt;<arg fmt="%s" index="1">magnitude_out</arg>&gt; is never assigned.
+</msg>
+
+<msg type="warning" file="Xst" num="653" delta="new" >Signal &lt;<arg fmt="%s" index="1">temp</arg>&gt; is used but never assigned. This sourceless signal will be automatically connected to value <arg fmt="%s" index="2">0000000000000000000000000000000</arg>.
+</msg>
+
+<msg type="warning" file="Xst" num="646" delta="new" >Signal &lt;<arg fmt="%s" index="1">abs_exp</arg>&gt; is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+</msg>
+
+</messages>
+
