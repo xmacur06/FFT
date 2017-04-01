@@ -57,9 +57,13 @@
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
     </transform>
-    <transform xil_pn:end_ts="1491045380" xil_pn:in_ck="-6991347740277651435" xil_pn:name="TRAN_copyAbstractToPostAbstractSimulation" xil_pn:start_ts="1491045380">
+    <transform xil_pn:end_ts="1491048920" xil_pn:in_ck="-6991347740277651435" xil_pn:name="TRAN_copyAbstractToPostAbstractSimulation" xil_pn:start_ts="1491048920">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
+      <status xil_pn:value="OutOfDateForInputs"/>
+      <status xil_pn:value="OutOfDateForOutputs"/>
+      <status xil_pn:value="InputChanged"/>
+      <status xil_pn:value="OutputChanged"/>
       <outfile xil_pn:name="../SOURCES/ALU_convert.vhd"/>
       <outfile xil_pn:name="../SOURCES/TB_ALU_convert.vhd"/>
       <outfile xil_pn:name="../SOURCES/TOP.vhd"/>
@@ -82,6 +86,7 @@
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
       <status xil_pn:value="OutOfDateForInputs"/>
+      <status xil_pn:value="OutOfDateForPredecessor"/>
       <status xil_pn:value="OutOfDateForOutputs"/>
       <status xil_pn:value="InputChanged"/>
       <status xil_pn:value="OutputChanged"/>
@@ -145,10 +150,12 @@
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
     </transform>
-    <transform xil_pn:end_ts="1491044474" xil_pn:in_ck="5474716074981981129" xil_pn:name="TRANEXT_xstsynthesize_spartan3" xil_pn:prop_ck="-5030915360624321697" xil_pn:start_ts="1491044462">
+    <transform xil_pn:end_ts="1491052541" xil_pn:in_ck="5474716074981981129" xil_pn:name="TRANEXT_xstsynthesize_spartan3" xil_pn:prop_ck="-5030915360624321697" xil_pn:start_ts="1491052530">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="WarningsGenerated"/>
       <status xil_pn:value="ReadyToRun"/>
+      <status xil_pn:value="OutOfDateForInputs"/>
+      <status xil_pn:value="InputChanged"/>
       <outfile xil_pn:name=".lso"/>
       <outfile xil_pn:name="ALU_convert.lso"/>
       <outfile xil_pn:name="ALU_convert.ngc"/>

@@ -65,19 +65,35 @@ begin
   real_math_in <= SIGNED(real_in)/N;
   imag_math_in <= SIGNED(imag_in)/N;
   
+  real_math_out <= "00000000000000000000000000000000000000000000000111111111111111" when real_math_in = "1111111111111111000000000000000" else 
+                    real_math_in*(-1)                                               when real_math_in(30) = '1'                           else
+                    real_math_in*(1);
+  
+  
+  imag_math_out <= "00000000000000000000000000000000000000000000000111111111111111" when imag_math_in = "1111111111111111000000000000000" else
+                    imag_math_in*(-1)                                               when imag_math_in(30) = '1'                           else
+                    imag_math_in*(1);
   process(clk) begin
     if rising_edge(clk) then
-      if real_math_in(30) = '1' then
-        real_math_out <= real_math_in*(-1);
-      else
-        real_math_out <= temp+real_math_in;
-      end if;
-      
-      if imag_math_in(30) = '1' then
-        imag_math_out <= imag_math_in*(-1);
-      else
-        imag_math_out <= temp+imag_math_in;
-      end if;
+      --if real_math_in(30) = '1' then
+        
+   
+       -- real_math_out <= real_math_in*(-1);
+        --  if real_math_out > X"7FFF" then
+        --    real_math_out <= real_math_out-1;
+         -- end if;
+--      else
+--        real_math_out <= temp+real_math_in;
+--      end if;
+--      
+--      if imag_math_in(30) = '1' then
+--        imag_math_out <= imag_math_in*(-1);
+--        if imag_math_out = X"8000" then
+--            imag_math_out <=imag_math_out-1;
+--        end if;
+--      else
+--        imag_math_out <= temp+imag_math_in;
+--      end if;
       
       real_unsig <= UNSIGNED(real_math_out(14 downto 0));
       imag_unsig <= UNSIGNED(imag_math_out(14 downto 0));
