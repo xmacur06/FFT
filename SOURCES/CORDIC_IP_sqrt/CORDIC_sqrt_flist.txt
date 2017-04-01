@@ -12,3 +12,4 @@ CORDIC_sqrt\doc\cordic_v4_0_vinfo.html
 CORDIC_sqrt_flist.txt
 CORDIC_sqrt_readme.txt
 CORDIC_sqrt_xmdf.tcl
+_xmsgs\pn_parser.xmsgs

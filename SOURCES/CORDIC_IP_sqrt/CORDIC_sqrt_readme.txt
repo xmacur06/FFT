@@ -58,6 +58,7 @@ Generate ISE project file:
 
    * CORDIC_sqrt.gise
    * CORDIC_sqrt.xise
+   * _xmsgs/pn_parser.xmsgs
 
 Deliver Readme:
    Readme file for the IP.

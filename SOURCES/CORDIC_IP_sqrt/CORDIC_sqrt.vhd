@@ -42,8 +42,8 @@ LIBRARY XilinxCoreLib;
 -- synthesis translate_on
 ENTITY CORDIC_sqrt IS
   PORT (
-    x_in : IN STD_LOGIC_VECTOR(32 DOWNTO 0);
-    x_out : OUT STD_LOGIC_VECTOR(16 DOWNTO 0);
+    x_in : IN STD_LOGIC_VECTOR(30 DOWNTO 0);
+    x_out : OUT STD_LOGIC_VECTOR(15 DOWNTO 0);
     rdy : OUT STD_LOGIC;
     clk : IN STD_LOGIC;
     ce : IN STD_LOGIC
@@ -54,8 +54,8 @@ ARCHITECTURE CORDIC_sqrt_a OF CORDIC_sqrt IS
 -- synthesis translate_off
 COMPONENT wrapped_CORDIC_sqrt
   PORT (
-    x_in : IN STD_LOGIC_VECTOR(32 DOWNTO 0);
-    x_out : OUT STD_LOGIC_VECTOR(16 DOWNTO 0);
+    x_in : IN STD_LOGIC_VECTOR(30 DOWNTO 0);
+    x_out : OUT STD_LOGIC_VECTOR(15 DOWNTO 0);
     rdy : OUT STD_LOGIC;
     clk : IN STD_LOGIC;
     ce : IN STD_LOGIC
@@ -82,9 +82,9 @@ END COMPONENT;
       c_has_x_out => 1,
       c_has_y_in => 0,
       c_has_y_out => 0,
-      c_input_width => 33,
+      c_input_width => 31,
       c_iterations => 0,
-      c_output_width => 17,
+      c_output_width => 16,
       c_phase_format => 0,
       c_pipeline_mode => -2,
       c_precision => 0,

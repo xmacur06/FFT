@@ -22,6 +22,8 @@
   <sourceproject xmlns="http://www.xilinx.com/XMLSchema" xil_pn:fileType="FILE_XISE" xil_pn:name="../FFT.xise"/>
 
   <files xmlns="http://www.xilinx.com/XMLSchema">
+    <file xil_pn:fileType="FILE_USERDOC" xil_pn:name="../SOURCES/CORDIC_IP_sqrt/CORDIC_sqrt_readme.txt"/>
+    <file xil_pn:fileType="FILE_LOG" xil_pn:name="../SOURCES/CORDIC_IP_sqrt/coregen.log"/>
     <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_LSO" xil_pn:name=".lso"/>
     <file xil_pn:fileType="FILE_CMD_LOG" xil_pn:name="ALU_convert.cmd_log"/>
     <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_LSO" xil_pn:name="ALU_convert.lso"/>
@@ -71,7 +73,9 @@
     <transform xil_pn:end_ts="1491007928" xil_pn:in_ck="7685418484769007582" xil_pn:name="TRAN_regenerateCoresSim" xil_pn:prop_ck="1087771545505988710" xil_pn:start_ts="1491007928">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
+      <status xil_pn:value="OutOfDateForInputs"/>
       <status xil_pn:value="OutOfDateForProperties"/>
+      <status xil_pn:value="InputChanged"/>
     </transform>
     <transform xil_pn:end_ts="1491008190" xil_pn:in_ck="-6991347740277651435" xil_pn:name="TRAN_copyPostAbstractToPreSimulation" xil_pn:start_ts="1491008190">
       <status xil_pn:value="SuccessfullyRun"/>
@@ -112,49 +116,9 @@
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
     </transform>
-    <transform xil_pn:end_ts="1491009205" xil_pn:name="TRAN_schematicsToHdl" xil_pn:prop_ck="-12463501887974115" xil_pn:start_ts="1491009205">
+    <transform xil_pn:name="TRAN_SubProjectAbstractToPreProxy">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
-    </transform>
-    <transform xil_pn:end_ts="1491009205" xil_pn:in_ck="7685418484769007582" xil_pn:name="TRAN_regenerateCores" xil_pn:prop_ck="-818445608775526859" xil_pn:start_ts="1491009205">
-      <status xil_pn:value="SuccessfullyRun"/>
-      <status xil_pn:value="ReadyToRun"/>
-    </transform>
-    <transform xil_pn:end_ts="1491009205" xil_pn:in_ck="6717974031119955228" xil_pn:name="TRAN_SubProjectAbstractToPreProxy" xil_pn:start_ts="1491009205">
-      <status xil_pn:value="SuccessfullyRun"/>
-      <status xil_pn:value="ReadyToRun"/>
-    </transform>
-    <transform xil_pn:end_ts="1491009205" xil_pn:name="TRAN_xawsTohdl" xil_pn:prop_ck="407914383976082277" xil_pn:start_ts="1491009205">
-      <status xil_pn:value="SuccessfullyRun"/>
-      <status xil_pn:value="ReadyToRun"/>
-    </transform>
-    <transform xil_pn:end_ts="1491009205" xil_pn:in_ck="6717974031119955228" xil_pn:name="TRAN_SubProjectPreToStructuralProxy" xil_pn:prop_ck="1110319057727724918" xil_pn:start_ts="1491009205">
-      <status xil_pn:value="SuccessfullyRun"/>
-      <status xil_pn:value="ReadyToRun"/>
-    </transform>
-    <transform xil_pn:end_ts="1491009205" xil_pn:name="TRAN_platgen" xil_pn:prop_ck="2869291707631193599" xil_pn:start_ts="1491009205">
-      <status xil_pn:value="SuccessfullyRun"/>
-      <status xil_pn:value="ReadyToRun"/>
-    </transform>
-    <transform xil_pn:end_ts="1491009213" xil_pn:in_ck="5474716074981981129" xil_pn:name="TRANEXT_xstsynthesize_spartan3" xil_pn:prop_ck="-5030915360624321697" xil_pn:start_ts="1491009205">
-      <status xil_pn:value="SuccessfullyRun"/>
-      <status xil_pn:value="WarningsGenerated"/>
-      <status xil_pn:value="ReadyToRun"/>
-      <status xil_pn:value="OutOfDateForInputs"/>
-      <status xil_pn:value="InputChanged"/>
-      <outfile xil_pn:name=".lso"/>
-      <outfile xil_pn:name="ALU_convert.lso"/>
-      <outfile xil_pn:name="ALU_convert.ngc"/>
-      <outfile xil_pn:name="ALU_convert.ngr"/>
-      <outfile xil_pn:name="ALU_convert.prj"/>
-      <outfile xil_pn:name="ALU_convert.stx"/>
-      <outfile xil_pn:name="ALU_convert.syr"/>
-      <outfile xil_pn:name="ALU_convert.xst"/>
-      <outfile xil_pn:name="ALU_convert_vhdl.prj"/>
-      <outfile xil_pn:name="ALU_convert_xst.xrpt"/>
-      <outfile xil_pn:name="_xmsgs/xst.xmsgs"/>
-      <outfile xil_pn:name="webtalk_pn.xml"/>
-      <outfile xil_pn:name="xst"/>
     </transform>
   </transforms>
 
