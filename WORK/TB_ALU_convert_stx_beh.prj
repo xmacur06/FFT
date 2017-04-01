@@ -1,2 +1,3 @@
+vhdl isim_temp "../SOURCES/CORDIC_IP_sqrt/CORDIC_sqrt.vhd"
 vhdl isim_temp "../SOURCES/ALU_convert.vhd"
 vhdl isim_temp "../SOURCES/TB_ALU_convert.vhd"

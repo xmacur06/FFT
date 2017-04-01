@@ -33,10 +33,10 @@ entity ALU_convert is
     generic (
            constant N                 : positive := 32768
             );
-    Port ( clk                        : in  STD_LOGIC;
-           real_in                    : in  STD_LOGIC_VECTOR (30 downto 0);
-           imag_in                    : in  STD_LOGIC_VECTOR (30 downto 0);
-           magnitude_out              : out  STD_LOGIC_VECTOR (16 downto 0));
+    Port ( clk                        : in   STD_LOGIC;
+           real_in                    : in   STD_LOGIC_VECTOR (30 downto 0);
+           imag_in                    : in   STD_LOGIC_VECTOR (30 downto 0);
+           magnitude_out              : out  STD_LOGIC_VECTOR (15 downto 0));
 end ALU_convert;
 
 architecture Behavioral of ALU_convert is
@@ -44,9 +44,21 @@ signal real_math_in, imag_math_in     : SIGNED(30 downto 0);
 signal real_math_out, imag_math_out   : SIGNED(61 downto 0);
 signal real_unsig, imag_unsig         : UNSIGNED(14 downto 0);
 signal real_exp, imag_exp             : UNSIGNED(29 downto 0);
-signal abs_exp                        : UNSIGNED(30 downto 0);
+signal abs_exp                        : STD_LOGIC_VECTOR(30 downto 0);
 signal temp_exp                       : UNSIGNED(30 downto 0)  := (others => '0');
 signal temp                           : SIGNED(61 downto 0)  := (others => '0');
+
+------------- Begin Cut here for COMPONENT Declaration ------ COMP_TAG
+COMPONENT CORDIC_sqrt
+  PORT (
+    x_in  : IN STD_LOGIC_VECTOR(30 DOWNTO 0);
+    x_out : OUT STD_LOGIC_VECTOR(15 DOWNTO 0);
+    rdy   : OUT STD_LOGIC;
+    clk   : IN STD_LOGIC;
+    ce    : IN STD_LOGIC
+  );
+END COMPONENT;
+-- COMP_TAG_END ------ End COMPONENT Declaration ------------
 
 
 begin
@@ -76,10 +88,20 @@ begin
     if rising_edge(clk) then
       real_exp <= real_unsig*real_unsig;
       imag_exp <= imag_unsig*imag_unsig;
-      abs_exp  <= temp_exp+imag_exp + real_exp;
+      abs_exp  <= STD_LOGIC_VECTOR(temp_exp+imag_exp + real_exp);
     end if;
   end process;
       
+------------- Begin Cut here for INSTANTIATION Template ----- INST_TAG
+your_instance_name : CORDIC_sqrt
+  PORT MAP (
+    x_in  => abs_exp,
+    x_out => magnitude_out,
+    rdy   => OPEN,
+    clk   => clk,
+    ce    => '1'
+  );
+-- INST_TAG_END ------ End INSTANTIATION Template ------------
 
 end Behavioral;
 

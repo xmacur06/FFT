@@ -4,13 +4,13 @@ Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
 
 
 Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.09 secs
+Total CPU time to Xst completion: 0.10 secs
  
 --> Parameter xsthdpdir set to xst
 
 
 Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.09 secs
+Total CPU time to Xst completion: 0.10 secs
  
 --> Reading design: ALU_convert.prj
 
@@ -107,8 +107,11 @@ Cores Search Directories           : {"../SOURCES/FFT_IP" "../SOURCES/CORDIC_IP_
 =========================================================================
 *                          HDL Compilation                              *
 =========================================================================
+Compiling vhdl file "C:/Users/JM/Xilinx/Projekty/FFT/SOURCES/CORDIC_IP_sqrt/CORDIC_sqrt.vhd" in Library work.
+Architecture cordic_sqrt_a of Entity cordic_sqrt is up to date.
 Compiling vhdl file "C:/Users/JM/Xilinx/Projekty/FFT/SOURCES/ALU_convert.vhd" in Library work.
-Architecture behavioral of Entity alu_convert is up to date.
+Entity <alu_convert> compiled.
+Entity <alu_convert> (Architecture <behavioral>) compiled.
 
 =========================================================================
 *                     Design Hierarchy Analysis                         *
@@ -122,8 +125,8 @@ Analyzing hierarchy for entity <ALU_convert> in library <work> (architecture <be
 =========================================================================
 Analyzing generic Entity <ALU_convert> in library <work> (Architecture <behavioral>).
 	N = 32768
-WARNING:Xst:1610 - "C:/Users/JM/Xilinx/Projekty/FFT/SOURCES/ALU_convert.vhd" line 57: Width mismatch. <real_math_in> has a width of 31 bits but assigned expression is 62-bit wide.
-WARNING:Xst:1610 - "C:/Users/JM/Xilinx/Projekty/FFT/SOURCES/ALU_convert.vhd" line 61: Width mismatch. <imag_math_in> has a width of 31 bits but assigned expression is 62-bit wide.
+WARNING:Xst:753 - "C:/Users/JM/Xilinx/Projekty/FFT/SOURCES/ALU_convert.vhd" line 96: Unconnected output port 'rdy' of component 'CORDIC_sqrt'.
+WARNING:Xst:2211 - "C:/Users/JM/Xilinx/Projekty/FFT/SOURCES/ALU_convert.vhd" line 96: Instantiating black box module <CORDIC_sqrt>.
 Entity <ALU_convert> analyzed. Unit <ALU_convert> generated.
 
 
@@ -135,31 +138,49 @@ Performing bidirectional port resolution...
 
 Synthesizing Unit <ALU_convert>.
     Related source file is "C:/Users/JM/Xilinx/Projekty/FFT/SOURCES/ALU_convert.vhd".
-WARNING:Xst:1306 - Output <magnitude_out> is never assigned.
-WARNING:Xst:653 - Signal <temp> is used but never assigned. This sourceless signal will be automatically connected to value 0000000000000000000000000000000.
-WARNING:Xst:646 - Signal <abs_exp> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
-    Found 31-bit register for signal <imag_math_in>.
+WARNING:Xst:653 - Signal <temp_exp> is used but never assigned. This sourceless signal will be automatically connected to value 0000000000000000000000000000000.
+WARNING:Xst:653 - Signal <temp> is used but never assigned. This sourceless signal will be automatically connected to value 00000000000000000000000000000000000000000000000000000000000000.
+WARNING:Xst:646 - Signal <real_math_out<61:15>> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:646 - Signal <imag_math_out<61:15>> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+    Found 31-bit register for signal <abs_exp>.
+    Found 31-bit adder for signal <abs_exp$add0000> created at line 91.
+    Found 31-bit adder for signal <abs_exp$addsub0000> created at line 91.
+    Found 30-bit register for signal <imag_exp>.
+    Found 15x15-bit multiplier for signal <imag_exp$mult0000> created at line 90.
     Found 31-bit adder for signal <imag_math_in$add0000>.
     Found 31-bit adder for signal <imag_math_in$addsub0000>.
-    Found 31-bit adder for signal <imag_math_in$sub0000> created at line 61.
-    Found 31-bit register for signal <real_math_in>.
+    Found 62-bit register for signal <imag_math_out>.
+    Found 62-bit adder for signal <imag_math_out$mux0001>.
+    Found 15-bit register for signal <imag_unsig>.
+    Found 30-bit register for signal <real_exp>.
+    Found 15x15-bit multiplier for signal <real_exp$mult0000> created at line 89.
     Found 31-bit adder for signal <real_math_in$add0000>.
     Found 31-bit adder for signal <real_math_in$addsub0000>.
-    Found 31-bit adder for signal <real_math_in$sub0000> created at line 57.
+    Found 62-bit register for signal <real_math_out>.
+    Found 62-bit adder for signal <real_math_out$mux0001>.
+    Found 15-bit register for signal <real_unsig>.
     Summary:
-	inferred  62 D-type flip-flop(s).
-	inferred   6 Adder/Subtractor(s).
+	inferred 245 D-type flip-flop(s).
+	inferred   8 Adder/Subtractor(s).
+	inferred   2 Multiplier(s).
 Unit <ALU_convert> synthesized.
 
+INFO:Xst:1767 - HDL ADVISOR - Resource sharing has identified that some arithmetic operations in this design can share the same physical resources for reduced device utilization. For improved clock frequency you may try to disable resource sharing.
 
 =========================================================================
 HDL Synthesis Report
 
 Macro Statistics
-# Adders/Subtractors                                   : 6
+# Multipliers                                          : 2
+ 15x15-bit multiplier                                  : 2
+# Adders/Subtractors                                   : 8
  31-bit adder                                          : 6
-# Registers                                            : 2
- 31-bit register                                       : 2
+ 62-bit adder                                          : 2
+# Registers                                            : 7
+ 15-bit register                                       : 2
+ 30-bit register                                       : 2
+ 31-bit register                                       : 1
+ 62-bit register                                       : 2
 
 =========================================================================
 
@@ -167,11 +188,220 @@ Macro Statistics
 *                       Advanced HDL Synthesis                          *
 =========================================================================
 
+Reading core <../SOURCES/CORDIC_IP_sqrt/CORDIC_sqrt.ngc>.
+Reading Secure Unit <blk0000000a>.
+Loading core <CORDIC_sqrt> for timing and area information for instance <your_instance_name>.
+WARNING:Xst:2677 - Node <imag_math_out_15> of sequential type is unconnected in block <ALU_convert>.
+WARNING:Xst:2677 - Node <imag_math_out_16> of sequential type is unconnected in block <ALU_convert>.
+WARNING:Xst:2677 - Node <imag_math_out_17> of sequential type is unconnected in block <ALU_convert>.
+WARNING:Xst:2677 - Node <imag_math_out_18> of sequential type is unconnected in block <ALU_convert>.
+WARNING:Xst:2677 - Node <imag_math_out_19> of sequential type is unconnected in block <ALU_convert>.
+WARNING:Xst:2677 - Node <imag_math_out_20> of sequential type is unconnected in block <ALU_convert>.
+WARNING:Xst:2677 - Node <imag_math_out_21> of sequential type is unconnected in block <ALU_convert>.
+WARNING:Xst:2677 - Node <imag_math_out_22> of sequential type is unconnected in block <ALU_convert>.
+WARNING:Xst:2677 - Node <imag_math_out_23> of sequential type is unconnected in block <ALU_convert>.
+WARNING:Xst:2677 - Node <imag_math_out_24> of sequential type is unconnected in block <ALU_convert>.
+WARNING:Xst:2677 - Node <imag_math_out_25> of sequential type is unconnected in block <ALU_convert>.
+WARNING:Xst:2677 - Node <imag_math_out_26> of sequential type is unconnected in block <ALU_convert>.
+WARNING:Xst:2677 - Node <imag_math_out_27> of sequential type is unconnected in block <ALU_convert>.
+WARNING:Xst:2677 - Node <imag_math_out_28> of sequential type is unconnected in block <ALU_convert>.
+WARNING:Xst:2677 - Node <imag_math_out_29> of sequential type is unconnected in block <ALU_convert>.
+WARNING:Xst:2677 - Node <imag_math_out_30> of sequential type is unconnected in block <ALU_convert>.
+WARNING:Xst:2677 - Node <imag_math_out_31> of sequential type is unconnected in block <ALU_convert>.
+WARNING:Xst:2677 - Node <imag_math_out_32> of sequential type is unconnected in block <ALU_convert>.
+WARNING:Xst:2677 - Node <imag_math_out_33> of sequential type is unconnected in block <ALU_convert>.
+WARNING:Xst:2677 - Node <imag_math_out_34> of sequential type is unconnected in block <ALU_convert>.
+WARNING:Xst:2677 - Node <imag_math_out_35> of sequential type is unconnected in block <ALU_convert>.
+WARNING:Xst:2677 - Node <imag_math_out_36> of sequential type is unconnected in block <ALU_convert>.
+WARNING:Xst:2677 - Node <imag_math_out_37> of sequential type is unconnected in block <ALU_convert>.
+WARNING:Xst:2677 - Node <imag_math_out_38> of sequential type is unconnected in block <ALU_convert>.
+WARNING:Xst:2677 - Node <imag_math_out_39> of sequential type is unconnected in block <ALU_convert>.
+WARNING:Xst:2677 - Node <imag_math_out_40> of sequential type is unconnected in block <ALU_convert>.
+WARNING:Xst:2677 - Node <imag_math_out_41> of sequential type is unconnected in block <ALU_convert>.
+WARNING:Xst:2677 - Node <imag_math_out_42> of sequential type is unconnected in block <ALU_convert>.
+WARNING:Xst:2677 - Node <imag_math_out_43> of sequential type is unconnected in block <ALU_convert>.
+WARNING:Xst:2677 - Node <imag_math_out_44> of sequential type is unconnected in block <ALU_convert>.
+WARNING:Xst:2677 - Node <imag_math_out_45> of sequential type is unconnected in block <ALU_convert>.
+WARNING:Xst:2677 - Node <imag_math_out_46> of sequential type is unconnected in block <ALU_convert>.
+WARNING:Xst:2677 - Node <imag_math_out_47> of sequential type is unconnected in block <ALU_convert>.
+WARNING:Xst:2677 - Node <imag_math_out_48> of sequential type is unconnected in block <ALU_convert>.
+WARNING:Xst:2677 - Node <imag_math_out_49> of sequential type is unconnected in block <ALU_convert>.
+WARNING:Xst:2677 - Node <imag_math_out_50> of sequential type is unconnected in block <ALU_convert>.
+WARNING:Xst:2677 - Node <imag_math_out_51> of sequential type is unconnected in block <ALU_convert>.
+WARNING:Xst:2677 - Node <imag_math_out_52> of sequential type is unconnected in block <ALU_convert>.
+WARNING:Xst:2677 - Node <imag_math_out_53> of sequential type is unconnected in block <ALU_convert>.
+WARNING:Xst:2677 - Node <imag_math_out_54> of sequential type is unconnected in block <ALU_convert>.
+WARNING:Xst:2677 - Node <imag_math_out_55> of sequential type is unconnected in block <ALU_convert>.
+WARNING:Xst:2677 - Node <imag_math_out_56> of sequential type is unconnected in block <ALU_convert>.
+WARNING:Xst:2677 - Node <imag_math_out_57> of sequential type is unconnected in block <ALU_convert>.
+WARNING:Xst:2677 - Node <imag_math_out_58> of sequential type is unconnected in block <ALU_convert>.
+WARNING:Xst:2677 - Node <imag_math_out_59> of sequential type is unconnected in block <ALU_convert>.
+WARNING:Xst:2677 - Node <imag_math_out_60> of sequential type is unconnected in block <ALU_convert>.
+WARNING:Xst:2677 - Node <imag_math_out_61> of sequential type is unconnected in block <ALU_convert>.
+WARNING:Xst:2677 - Node <real_math_out_15> of sequential type is unconnected in block <ALU_convert>.
+WARNING:Xst:2677 - Node <real_math_out_16> of sequential type is unconnected in block <ALU_convert>.
+WARNING:Xst:2677 - Node <real_math_out_17> of sequential type is unconnected in block <ALU_convert>.
+WARNING:Xst:2677 - Node <real_math_out_18> of sequential type is unconnected in block <ALU_convert>.
+WARNING:Xst:2677 - Node <real_math_out_19> of sequential type is unconnected in block <ALU_convert>.
+WARNING:Xst:2677 - Node <real_math_out_20> of sequential type is unconnected in block <ALU_convert>.
+WARNING:Xst:2677 - Node <real_math_out_21> of sequential type is unconnected in block <ALU_convert>.
+WARNING:Xst:2677 - Node <real_math_out_22> of sequential type is unconnected in block <ALU_convert>.
+WARNING:Xst:2677 - Node <real_math_out_23> of sequential type is unconnected in block <ALU_convert>.
+WARNING:Xst:2677 - Node <real_math_out_24> of sequential type is unconnected in block <ALU_convert>.
+WARNING:Xst:2677 - Node <real_math_out_25> of sequential type is unconnected in block <ALU_convert>.
+WARNING:Xst:2677 - Node <real_math_out_26> of sequential type is unconnected in block <ALU_convert>.
+WARNING:Xst:2677 - Node <real_math_out_27> of sequential type is unconnected in block <ALU_convert>.
+WARNING:Xst:2677 - Node <real_math_out_28> of sequential type is unconnected in block <ALU_convert>.
+WARNING:Xst:2677 - Node <real_math_out_29> of sequential type is unconnected in block <ALU_convert>.
+WARNING:Xst:2677 - Node <real_math_out_30> of sequential type is unconnected in block <ALU_convert>.
+WARNING:Xst:2677 - Node <real_math_out_31> of sequential type is unconnected in block <ALU_convert>.
+WARNING:Xst:2677 - Node <real_math_out_32> of sequential type is unconnected in block <ALU_convert>.
+WARNING:Xst:2677 - Node <real_math_out_33> of sequential type is unconnected in block <ALU_convert>.
+WARNING:Xst:2677 - Node <real_math_out_34> of sequential type is unconnected in block <ALU_convert>.
+WARNING:Xst:2677 - Node <real_math_out_35> of sequential type is unconnected in block <ALU_convert>.
+WARNING:Xst:2677 - Node <real_math_out_36> of sequential type is unconnected in block <ALU_convert>.
+WARNING:Xst:2677 - Node <real_math_out_37> of sequential type is unconnected in block <ALU_convert>.
+WARNING:Xst:2677 - Node <real_math_out_38> of sequential type is unconnected in block <ALU_convert>.
+WARNING:Xst:2677 - Node <real_math_out_39> of sequential type is unconnected in block <ALU_convert>.
+WARNING:Xst:2677 - Node <real_math_out_40> of sequential type is unconnected in block <ALU_convert>.
+WARNING:Xst:2677 - Node <real_math_out_41> of sequential type is unconnected in block <ALU_convert>.
+WARNING:Xst:2677 - Node <real_math_out_42> of sequential type is unconnected in block <ALU_convert>.
+WARNING:Xst:2677 - Node <real_math_out_43> of sequential type is unconnected in block <ALU_convert>.
+WARNING:Xst:2677 - Node <real_math_out_44> of sequential type is unconnected in block <ALU_convert>.
+WARNING:Xst:2677 - Node <real_math_out_45> of sequential type is unconnected in block <ALU_convert>.
+WARNING:Xst:2677 - Node <real_math_out_46> of sequential type is unconnected in block <ALU_convert>.
+WARNING:Xst:2677 - Node <real_math_out_47> of sequential type is unconnected in block <ALU_convert>.
+WARNING:Xst:2677 - Node <real_math_out_48> of sequential type is unconnected in block <ALU_convert>.
+WARNING:Xst:2677 - Node <real_math_out_49> of sequential type is unconnected in block <ALU_convert>.
+WARNING:Xst:2677 - Node <real_math_out_50> of sequential type is unconnected in block <ALU_convert>.
+WARNING:Xst:2677 - Node <real_math_out_51> of sequential type is unconnected in block <ALU_convert>.
+WARNING:Xst:2677 - Node <real_math_out_52> of sequential type is unconnected in block <ALU_convert>.
+WARNING:Xst:2677 - Node <real_math_out_53> of sequential type is unconnected in block <ALU_convert>.
+WARNING:Xst:2677 - Node <real_math_out_54> of sequential type is unconnected in block <ALU_convert>.
+WARNING:Xst:2677 - Node <real_math_out_55> of sequential type is unconnected in block <ALU_convert>.
+WARNING:Xst:2677 - Node <real_math_out_56> of sequential type is unconnected in block <ALU_convert>.
+WARNING:Xst:2677 - Node <real_math_out_57> of sequential type is unconnected in block <ALU_convert>.
+WARNING:Xst:2677 - Node <real_math_out_58> of sequential type is unconnected in block <ALU_convert>.
+WARNING:Xst:2677 - Node <real_math_out_59> of sequential type is unconnected in block <ALU_convert>.
+WARNING:Xst:2677 - Node <real_math_out_60> of sequential type is unconnected in block <ALU_convert>.
+WARNING:Xst:2677 - Node <real_math_out_61> of sequential type is unconnected in block <ALU_convert>.
+
+Synthesizing (advanced) Unit <ALU_convert>.
+	Found pipelined multiplier on signal <imag_exp_mult0000>:
+		- 1 pipeline level(s) found in a register connected to the multiplier macro output.
+		Pushing register(s) into the multiplier macro.
+	Found pipelined multiplier on signal <real_exp_mult0000>:
+		- 1 pipeline level(s) found in a register connected to the multiplier macro output.
+		Pushing register(s) into the multiplier macro.
+Unit <ALU_convert> synthesized (advanced).
+WARNING:Xst:2677 - Node <imag_math_out_15> of sequential type is unconnected in block <ALU_convert>.
+WARNING:Xst:2677 - Node <imag_math_out_16> of sequential type is unconnected in block <ALU_convert>.
+WARNING:Xst:2677 - Node <imag_math_out_17> of sequential type is unconnected in block <ALU_convert>.
+WARNING:Xst:2677 - Node <imag_math_out_18> of sequential type is unconnected in block <ALU_convert>.
+WARNING:Xst:2677 - Node <imag_math_out_19> of sequential type is unconnected in block <ALU_convert>.
+WARNING:Xst:2677 - Node <imag_math_out_20> of sequential type is unconnected in block <ALU_convert>.
+WARNING:Xst:2677 - Node <imag_math_out_21> of sequential type is unconnected in block <ALU_convert>.
+WARNING:Xst:2677 - Node <imag_math_out_22> of sequential type is unconnected in block <ALU_convert>.
+WARNING:Xst:2677 - Node <imag_math_out_23> of sequential type is unconnected in block <ALU_convert>.
+WARNING:Xst:2677 - Node <imag_math_out_24> of sequential type is unconnected in block <ALU_convert>.
+WARNING:Xst:2677 - Node <imag_math_out_25> of sequential type is unconnected in block <ALU_convert>.
+WARNING:Xst:2677 - Node <imag_math_out_26> of sequential type is unconnected in block <ALU_convert>.
+WARNING:Xst:2677 - Node <imag_math_out_27> of sequential type is unconnected in block <ALU_convert>.
+WARNING:Xst:2677 - Node <imag_math_out_28> of sequential type is unconnected in block <ALU_convert>.
+WARNING:Xst:2677 - Node <imag_math_out_29> of sequential type is unconnected in block <ALU_convert>.
+WARNING:Xst:2677 - Node <imag_math_out_30> of sequential type is unconnected in block <ALU_convert>.
+WARNING:Xst:2677 - Node <imag_math_out_31> of sequential type is unconnected in block <ALU_convert>.
+WARNING:Xst:2677 - Node <imag_math_out_32> of sequential type is unconnected in block <ALU_convert>.
+WARNING:Xst:2677 - Node <imag_math_out_33> of sequential type is unconnected in block <ALU_convert>.
+WARNING:Xst:2677 - Node <imag_math_out_34> of sequential type is unconnected in block <ALU_convert>.
+WARNING:Xst:2677 - Node <imag_math_out_35> of sequential type is unconnected in block <ALU_convert>.
+WARNING:Xst:2677 - Node <imag_math_out_36> of sequential type is unconnected in block <ALU_convert>.
+WARNING:Xst:2677 - Node <imag_math_out_37> of sequential type is unconnected in block <ALU_convert>.
+WARNING:Xst:2677 - Node <imag_math_out_38> of sequential type is unconnected in block <ALU_convert>.
+WARNING:Xst:2677 - Node <imag_math_out_39> of sequential type is unconnected in block <ALU_convert>.
+WARNING:Xst:2677 - Node <imag_math_out_40> of sequential type is unconnected in block <ALU_convert>.
+WARNING:Xst:2677 - Node <imag_math_out_41> of sequential type is unconnected in block <ALU_convert>.
+WARNING:Xst:2677 - Node <imag_math_out_42> of sequential type is unconnected in block <ALU_convert>.
+WARNING:Xst:2677 - Node <imag_math_out_43> of sequential type is unconnected in block <ALU_convert>.
+WARNING:Xst:2677 - Node <imag_math_out_44> of sequential type is unconnected in block <ALU_convert>.
+WARNING:Xst:2677 - Node <imag_math_out_45> of sequential type is unconnected in block <ALU_convert>.
+WARNING:Xst:2677 - Node <imag_math_out_46> of sequential type is unconnected in block <ALU_convert>.
+WARNING:Xst:2677 - Node <imag_math_out_47> of sequential type is unconnected in block <ALU_convert>.
+WARNING:Xst:2677 - Node <imag_math_out_48> of sequential type is unconnected in block <ALU_convert>.
+WARNING:Xst:2677 - Node <imag_math_out_49> of sequential type is unconnected in block <ALU_convert>.
+WARNING:Xst:2677 - Node <imag_math_out_50> of sequential type is unconnected in block <ALU_convert>.
+WARNING:Xst:2677 - Node <imag_math_out_51> of sequential type is unconnected in block <ALU_convert>.
+WARNING:Xst:2677 - Node <imag_math_out_52> of sequential type is unconnected in block <ALU_convert>.
+WARNING:Xst:2677 - Node <imag_math_out_53> of sequential type is unconnected in block <ALU_convert>.
+WARNING:Xst:2677 - Node <imag_math_out_54> of sequential type is unconnected in block <ALU_convert>.
+WARNING:Xst:2677 - Node <imag_math_out_55> of sequential type is unconnected in block <ALU_convert>.
+WARNING:Xst:2677 - Node <imag_math_out_56> of sequential type is unconnected in block <ALU_convert>.
+WARNING:Xst:2677 - Node <imag_math_out_57> of sequential type is unconnected in block <ALU_convert>.
+WARNING:Xst:2677 - Node <imag_math_out_58> of sequential type is unconnected in block <ALU_convert>.
+WARNING:Xst:2677 - Node <imag_math_out_59> of sequential type is unconnected in block <ALU_convert>.
+WARNING:Xst:2677 - Node <imag_math_out_60> of sequential type is unconnected in block <ALU_convert>.
+WARNING:Xst:2677 - Node <imag_math_out_61> of sequential type is unconnected in block <ALU_convert>.
+WARNING:Xst:2677 - Node <real_math_out_15> of sequential type is unconnected in block <ALU_convert>.
+WARNING:Xst:2677 - Node <real_math_out_16> of sequential type is unconnected in block <ALU_convert>.
+WARNING:Xst:2677 - Node <real_math_out_17> of sequential type is unconnected in block <ALU_convert>.
+WARNING:Xst:2677 - Node <real_math_out_18> of sequential type is unconnected in block <ALU_convert>.
+WARNING:Xst:2677 - Node <real_math_out_19> of sequential type is unconnected in block <ALU_convert>.
+WARNING:Xst:2677 - Node <real_math_out_20> of sequential type is unconnected in block <ALU_convert>.
+WARNING:Xst:2677 - Node <real_math_out_21> of sequential type is unconnected in block <ALU_convert>.
+WARNING:Xst:2677 - Node <real_math_out_22> of sequential type is unconnected in block <ALU_convert>.
+WARNING:Xst:2677 - Node <real_math_out_23> of sequential type is unconnected in block <ALU_convert>.
+WARNING:Xst:2677 - Node <real_math_out_24> of sequential type is unconnected in block <ALU_convert>.
+WARNING:Xst:2677 - Node <real_math_out_25> of sequential type is unconnected in block <ALU_convert>.
+WARNING:Xst:2677 - Node <real_math_out_26> of sequential type is unconnected in block <ALU_convert>.
+WARNING:Xst:2677 - Node <real_math_out_27> of sequential type is unconnected in block <ALU_convert>.
+WARNING:Xst:2677 - Node <real_math_out_28> of sequential type is unconnected in block <ALU_convert>.
+WARNING:Xst:2677 - Node <real_math_out_29> of sequential type is unconnected in block <ALU_convert>.
+WARNING:Xst:2677 - Node <real_math_out_30> of sequential type is unconnected in block <ALU_convert>.
+WARNING:Xst:2677 - Node <real_math_out_31> of sequential type is unconnected in block <ALU_convert>.
+WARNING:Xst:2677 - Node <real_math_out_32> of sequential type is unconnected in block <ALU_convert>.
+WARNING:Xst:2677 - Node <real_math_out_33> of sequential type is unconnected in block <ALU_convert>.
+WARNING:Xst:2677 - Node <real_math_out_34> of sequential type is unconnected in block <ALU_convert>.
+WARNING:Xst:2677 - Node <real_math_out_35> of sequential type is unconnected in block <ALU_convert>.
+WARNING:Xst:2677 - Node <real_math_out_36> of sequential type is unconnected in block <ALU_convert>.
+WARNING:Xst:2677 - Node <real_math_out_37> of sequential type is unconnected in block <ALU_convert>.
+WARNING:Xst:2677 - Node <real_math_out_38> of sequential type is unconnected in block <ALU_convert>.
+WARNING:Xst:2677 - Node <real_math_out_39> of sequential type is unconnected in block <ALU_convert>.
+WARNING:Xst:2677 - Node <real_math_out_40> of sequential type is unconnected in block <ALU_convert>.
+WARNING:Xst:2677 - Node <real_math_out_41> of sequential type is unconnected in block <ALU_convert>.
+WARNING:Xst:2677 - Node <real_math_out_42> of sequential type is unconnected in block <ALU_convert>.
+WARNING:Xst:2677 - Node <real_math_out_43> of sequential type is unconnected in block <ALU_convert>.
+WARNING:Xst:2677 - Node <real_math_out_44> of sequential type is unconnected in block <ALU_convert>.
+WARNING:Xst:2677 - Node <real_math_out_45> of sequential type is unconnected in block <ALU_convert>.
+WARNING:Xst:2677 - Node <real_math_out_46> of sequential type is unconnected in block <ALU_convert>.
+WARNING:Xst:2677 - Node <real_math_out_47> of sequential type is unconnected in block <ALU_convert>.
+WARNING:Xst:2677 - Node <real_math_out_48> of sequential type is unconnected in block <ALU_convert>.
+WARNING:Xst:2677 - Node <real_math_out_49> of sequential type is unconnected in block <ALU_convert>.
+WARNING:Xst:2677 - Node <real_math_out_50> of sequential type is unconnected in block <ALU_convert>.
+WARNING:Xst:2677 - Node <real_math_out_51> of sequential type is unconnected in block <ALU_convert>.
+WARNING:Xst:2677 - Node <real_math_out_52> of sequential type is unconnected in block <ALU_convert>.
+WARNING:Xst:2677 - Node <real_math_out_53> of sequential type is unconnected in block <ALU_convert>.
+WARNING:Xst:2677 - Node <real_math_out_54> of sequential type is unconnected in block <ALU_convert>.
+WARNING:Xst:2677 - Node <real_math_out_55> of sequential type is unconnected in block <ALU_convert>.
+WARNING:Xst:2677 - Node <real_math_out_56> of sequential type is unconnected in block <ALU_convert>.
+WARNING:Xst:2677 - Node <real_math_out_57> of sequential type is unconnected in block <ALU_convert>.
+WARNING:Xst:2677 - Node <real_math_out_58> of sequential type is unconnected in block <ALU_convert>.
+WARNING:Xst:2677 - Node <real_math_out_59> of sequential type is unconnected in block <ALU_convert>.
+WARNING:Xst:2677 - Node <real_math_out_60> of sequential type is unconnected in block <ALU_convert>.
+WARNING:Xst:2677 - Node <real_math_out_61> of sequential type is unconnected in block <ALU_convert>.
 
 =========================================================================
 Advanced HDL Synthesis Report
 
-Found no macro
+Macro Statistics
+# Multipliers                                          : 2
+ 15x15-bit registered multiplier                       : 2
+# Adders/Subtractors                                   : 7
+ 31-bit adder                                          : 4
+ 31-bit adder carry in                                 : 1
+ 62-bit adder                                          : 2
+# Registers                                            : 91
+ Flip-Flops                                            : 91
+
 =========================================================================
 
 =========================================================================
@@ -182,14 +412,52 @@ Optimizing unit <ALU_convert> ...
 
 Mapping all equations...
 Building and optimizing final netlist ...
-Found area constraint ratio of 100 (+ 5) on block ALU_convert, actual ratio is 0.
+Found area constraint ratio of 100 (+ 5) on block ALU_convert, actual ratio is 20.
 
 Final Macro Processing ...
+
+Processing Unit <ALU_convert> :
+	Found 2-bit shift register for signal <imag_unsig_0>.
+	Found 2-bit shift register for signal <imag_unsig_1>.
+	Found 2-bit shift register for signal <imag_unsig_2>.
+	Found 2-bit shift register for signal <imag_unsig_3>.
+	Found 2-bit shift register for signal <imag_unsig_4>.
+	Found 2-bit shift register for signal <imag_unsig_5>.
+	Found 2-bit shift register for signal <imag_unsig_6>.
+	Found 2-bit shift register for signal <imag_unsig_7>.
+	Found 2-bit shift register for signal <imag_unsig_8>.
+	Found 2-bit shift register for signal <imag_unsig_9>.
+	Found 2-bit shift register for signal <imag_unsig_10>.
+	Found 2-bit shift register for signal <imag_unsig_11>.
+	Found 2-bit shift register for signal <imag_unsig_12>.
+	Found 2-bit shift register for signal <imag_unsig_13>.
+	Found 2-bit shift register for signal <imag_unsig_14>.
+	Found 2-bit shift register for signal <real_unsig_0>.
+	Found 2-bit shift register for signal <real_unsig_1>.
+	Found 2-bit shift register for signal <real_unsig_2>.
+	Found 2-bit shift register for signal <real_unsig_3>.
+	Found 2-bit shift register for signal <real_unsig_4>.
+	Found 2-bit shift register for signal <real_unsig_5>.
+	Found 2-bit shift register for signal <real_unsig_6>.
+	Found 2-bit shift register for signal <real_unsig_7>.
+	Found 2-bit shift register for signal <real_unsig_8>.
+	Found 2-bit shift register for signal <real_unsig_9>.
+	Found 2-bit shift register for signal <real_unsig_10>.
+	Found 2-bit shift register for signal <real_unsig_11>.
+	Found 2-bit shift register for signal <real_unsig_12>.
+	Found 2-bit shift register for signal <real_unsig_13>.
+	Found 2-bit shift register for signal <real_unsig_14>.
+Unit <ALU_convert> processed.
 
 =========================================================================
 Final Register Report
 
-Found no macro
+Macro Statistics
+# Registers                                            : 31
+ Flip-Flops                                            : 31
+# Shift Registers                                      : 30
+ 2-bit shift register                                  : 30
+
 =========================================================================
 
 =========================================================================
@@ -214,9 +482,34 @@ Optimization Goal                  : Speed
 Keep Hierarchy                     : No
 
 Design Statistics
-# IOs                              : 80
+# IOs                              : 79
 
 Cell Usage :
+# BELS                             : 641
+#      GND                         : 2
+#      INV                         : 107
+#      LUT1                        : 4
+#      LUT2                        : 59
+#      LUT3                        : 161
+#      LUT4                        : 4
+#      MULT_AND                    : 26
+#      MUXCY                       : 152
+#      VCC                         : 2
+#      XORCY                       : 124
+# FlipFlops/Latches                : 387
+#      FD                          : 61
+#      FDE                         : 48
+#      FDRE                        : 278
+# Shift Registers                  : 56
+#      SRL16                       : 30
+#      SRL16E                      : 26
+# Clock Buffers                    : 1
+#      BUFGP                       : 1
+# IO Buffers                       : 78
+#      IBUF                        : 62
+#      OBUF                        : 16
+# MULTs                            : 2
+#      MULT18X18S                  : 2
 =========================================================================
 
 Device utilization summary:
@@ -224,9 +517,15 @@ Device utilization summary:
 
 Selected Device : 3s200ft256-4 
 
- Number of Slices:                        0  out of   1920     0%  
- Number of IOs:                          80
- Number of bonded IOBs:                   0  out of    173     0%  
+ Number of Slices:                      392  out of   1920    20%  
+ Number of Slice Flip Flops:            387  out of   3840    10%  
+ Number of 4 input LUTs:                391  out of   3840    10%  
+    Number used as logic:               335
+    Number used as Shift registers:      56
+ Number of IOs:                          79
+ Number of bonded IOBs:                  79  out of    173    45%  
+ Number of MULT18X18s:                    2  out of     12    16%  
+ Number of GCLKs:                         1  out of      8    12%  
 
 ---------------------------
 Partition Resource Summary:
@@ -246,19 +545,28 @@ NOTE: THESE TIMING NUMBERS ARE ONLY A SYNTHESIS ESTIMATE.
 
 Clock Information:
 ------------------
-No clock signals found in this design
+-----------------------------------+------------------------+-------+
+Clock Signal                       | Clock buffer(FF name)  | Load  |
+-----------------------------------+------------------------+-------+
+clk                                | BUFGP                  | 445   |
+-----------------------------------+------------------------+-------+
 
 Asynchronous Control Signals Information:
 ----------------------------------------
-No asynchronous control signals found in this design
+-----------------------------------+------------------------------+-------+
+Control Signal                     | Buffer(FF name)              | Load  |
+-----------------------------------+------------------------------+-------+
+N0(XST_GND:G)                      | NONE(Mmult_imag_exp_mult0000)| 2     |
+N1(XST_VCC:P)                      | NONE(Mmult_imag_exp_mult0000)| 2     |
+-----------------------------------+------------------------------+-------+
 
 Timing Summary:
 ---------------
 Speed Grade: -4
 
-   Minimum period: No path found
-   Minimum input arrival time before clock: No path found
-   Maximum output required time after clock: No path found
+   Minimum period: 7.569ns (Maximum Frequency: 132.118MHz)
+   Minimum input arrival time before clock: 15.243ns
+   Maximum output required time after clock: 7.165ns
    Maximum combinational path delay: No path found
 
 Timing Detail:
@@ -266,16 +574,137 @@ Timing Detail:
 All values displayed in nanoseconds (ns)
 
 =========================================================================
+Timing constraint: Default period analysis for Clock 'clk'
+  Clock period: 7.569ns (frequency: 132.118MHz)
+  Total number of paths / destination ports: 8884 / 488
+-------------------------------------------------------------------------
+Delay:               7.569ns (Levels of Logic = 8)
+  Source:            your_instance_name/blk00000362 (FF)
+  Destination:       your_instance_name/blk00000003 (FF)
+  Source Clock:      clk rising
+  Destination Clock: clk rising
+
+  Data Path: your_instance_name/blk00000362 to your_instance_name/blk00000003
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FDE:C->Q              4   0.720   1.256  blk00000362 (sig00000008)
+     LUT3:I0->O            2   0.551   1.216  blk000003d5 (sig00000265)
+     begin scope: 'blk0000000a'
+     SEC:in->out           1   0.551   0.000  sec_inst (sec_net)
+     SEC:in->out           1   0.500   0.000  sec_inst (sec_net)
+     SEC:in->out           1   0.064   0.000  sec_inst (sec_net)
+     SEC:in->out           1   0.064   0.000  sec_inst (sec_net)
+     SEC:in->out           5   0.904   0.989  sec_inst (sec_net)
+     end scope: 'blk0000000a'
+     LUT3:I2->O            1   0.551   0.000  blk000003d6 (sig00000255)
+     FDRE:D                    0.203          blk00000003
+    ----------------------------------------
+    Total                      7.569ns (4.108ns logic, 3.461ns route)
+                                       (54.3% logic, 45.7% route)
+
+=========================================================================
+Timing constraint: Default OFFSET IN BEFORE for Clock 'clk'
+  Total number of paths / destination ports: 230362 / 30
+-------------------------------------------------------------------------
+Offset:              15.243ns (Levels of Logic = 53)
+  Source:            imag_in<0> (PAD)
+  Destination:       Mshreg_imag_unsig_14 (FF)
+  Destination Clock: clk rising
+
+  Data Path: imag_in<0> to Mshreg_imag_unsig_14
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     IBUF:I->O             1   0.821   1.140  imag_in_0_IBUF (imag_in_0_IBUF)
+     LUT1:I0->O            1   0.551   0.000  Madd_imag_math_in_add0000_cy<0>_rt (Madd_imag_math_in_add0000_cy<0>_rt)
+     MUXCY:S->O            1   0.500   0.000  Madd_imag_math_in_add0000_cy<0> (Madd_imag_math_in_add0000_cy<0>)
+     MUXCY:CI->O           1   0.064   0.000  Madd_imag_math_in_add0000_cy<1> (Madd_imag_math_in_add0000_cy<1>)
+     MUXCY:CI->O           1   0.064   0.000  Madd_imag_math_in_add0000_cy<2> (Madd_imag_math_in_add0000_cy<2>)
+     MUXCY:CI->O           1   0.064   0.000  Madd_imag_math_in_add0000_cy<3> (Madd_imag_math_in_add0000_cy<3>)
+     MUXCY:CI->O           1   0.064   0.000  Madd_imag_math_in_add0000_cy<4> (Madd_imag_math_in_add0000_cy<4>)
+     MUXCY:CI->O           1   0.064   0.000  Madd_imag_math_in_add0000_cy<5> (Madd_imag_math_in_add0000_cy<5>)
+     MUXCY:CI->O           1   0.064   0.000  Madd_imag_math_in_add0000_cy<6> (Madd_imag_math_in_add0000_cy<6>)
+     MUXCY:CI->O           1   0.064   0.000  Madd_imag_math_in_add0000_cy<7> (Madd_imag_math_in_add0000_cy<7>)
+     MUXCY:CI->O           1   0.064   0.000  Madd_imag_math_in_add0000_cy<8> (Madd_imag_math_in_add0000_cy<8>)
+     MUXCY:CI->O           1   0.064   0.000  Madd_imag_math_in_add0000_cy<9> (Madd_imag_math_in_add0000_cy<9>)
+     MUXCY:CI->O           1   0.064   0.000  Madd_imag_math_in_add0000_cy<10> (Madd_imag_math_in_add0000_cy<10>)
+     MUXCY:CI->O           1   0.064   0.000  Madd_imag_math_in_add0000_cy<11> (Madd_imag_math_in_add0000_cy<11>)
+     MUXCY:CI->O           1   0.064   0.000  Madd_imag_math_in_add0000_cy<12> (Madd_imag_math_in_add0000_cy<12>)
+     MUXCY:CI->O           1   0.064   0.000  Madd_imag_math_in_add0000_cy<13> (Madd_imag_math_in_add0000_cy<13>)
+     MUXCY:CI->O           1   0.064   0.000  Madd_imag_math_in_add0000_cy<14> (Madd_imag_math_in_add0000_cy<14>)
+     XORCY:CI->O           1   0.904   1.140  Madd_imag_math_in_add0000_xor<15> (imag_math_in_add0000<15>)
+     LUT1:I0->O            1   0.551   0.000  Madd_imag_math_in_addsub0000_cy<0>_rt (Madd_imag_math_in_addsub0000_cy<0>_rt)
+     MUXCY:S->O            1   0.500   0.000  Madd_imag_math_in_addsub0000_cy<0> (Madd_imag_math_in_addsub0000_cy<0>)
+     MUXCY:CI->O           1   0.064   0.000  Madd_imag_math_in_addsub0000_cy<1> (Madd_imag_math_in_addsub0000_cy<1>)
+     MUXCY:CI->O           1   0.064   0.000  Madd_imag_math_in_addsub0000_cy<2> (Madd_imag_math_in_addsub0000_cy<2>)
+     MUXCY:CI->O           1   0.064   0.000  Madd_imag_math_in_addsub0000_cy<3> (Madd_imag_math_in_addsub0000_cy<3>)
+     MUXCY:CI->O           1   0.064   0.000  Madd_imag_math_in_addsub0000_cy<4> (Madd_imag_math_in_addsub0000_cy<4>)
+     MUXCY:CI->O           1   0.064   0.000  Madd_imag_math_in_addsub0000_cy<5> (Madd_imag_math_in_addsub0000_cy<5>)
+     MUXCY:CI->O           1   0.064   0.000  Madd_imag_math_in_addsub0000_cy<6> (Madd_imag_math_in_addsub0000_cy<6>)
+     MUXCY:CI->O           1   0.064   0.000  Madd_imag_math_in_addsub0000_cy<7> (Madd_imag_math_in_addsub0000_cy<7>)
+     MUXCY:CI->O           1   0.064   0.000  Madd_imag_math_in_addsub0000_cy<8> (Madd_imag_math_in_addsub0000_cy<8>)
+     MUXCY:CI->O           1   0.064   0.000  Madd_imag_math_in_addsub0000_cy<9> (Madd_imag_math_in_addsub0000_cy<9>)
+     MUXCY:CI->O           1   0.064   0.000  Madd_imag_math_in_addsub0000_cy<10> (Madd_imag_math_in_addsub0000_cy<10>)
+     MUXCY:CI->O           1   0.064   0.000  Madd_imag_math_in_addsub0000_cy<11> (Madd_imag_math_in_addsub0000_cy<11>)
+     MUXCY:CI->O           1   0.064   0.000  Madd_imag_math_in_addsub0000_cy<12> (Madd_imag_math_in_addsub0000_cy<12>)
+     MUXCY:CI->O           1   0.064   0.000  Madd_imag_math_in_addsub0000_cy<13> (Madd_imag_math_in_addsub0000_cy<13>)
+     MUXCY:CI->O           1   0.064   0.000  Madd_imag_math_in_addsub0000_cy<14> (Madd_imag_math_in_addsub0000_cy<14>)
+     MUXCY:CI->O           1   0.064   0.000  Madd_imag_math_in_addsub0000_cy<15> (Madd_imag_math_in_addsub0000_cy<15>)
+     MUXCY:CI->O           0   0.064   0.000  Madd_imag_math_in_addsub0000_cy<16> (Madd_imag_math_in_addsub0000_cy<16>)
+     XORCY:CI->O           2   0.904   1.216  Madd_imag_math_in_addsub0000_xor<17> (imag_math_in_addsub0000<17>)
+     LUT2:I0->O           15   0.551   1.383  imag_math_out_mux0002<47>_mand1 (imag_math_out_mux0002<47>_mand)
+     LUT2:I1->O            1   0.551   0.000  Madd_imag_math_out_mux0001_lut<1> (Madd_imag_math_out_mux0001_lut<1>)
+     MUXCY:S->O            1   0.500   0.000  Madd_imag_math_out_mux0001_cy<1> (Madd_imag_math_out_mux0001_cy<1>)
+     MUXCY:CI->O           1   0.064   0.000  Madd_imag_math_out_mux0001_cy<2> (Madd_imag_math_out_mux0001_cy<2>)
+     MUXCY:CI->O           1   0.064   0.000  Madd_imag_math_out_mux0001_cy<3> (Madd_imag_math_out_mux0001_cy<3>)
+     MUXCY:CI->O           1   0.064   0.000  Madd_imag_math_out_mux0001_cy<4> (Madd_imag_math_out_mux0001_cy<4>)
+     MUXCY:CI->O           1   0.064   0.000  Madd_imag_math_out_mux0001_cy<5> (Madd_imag_math_out_mux0001_cy<5>)
+     MUXCY:CI->O           1   0.064   0.000  Madd_imag_math_out_mux0001_cy<6> (Madd_imag_math_out_mux0001_cy<6>)
+     MUXCY:CI->O           1   0.064   0.000  Madd_imag_math_out_mux0001_cy<7> (Madd_imag_math_out_mux0001_cy<7>)
+     MUXCY:CI->O           1   0.064   0.000  Madd_imag_math_out_mux0001_cy<8> (Madd_imag_math_out_mux0001_cy<8>)
+     MUXCY:CI->O           1   0.064   0.000  Madd_imag_math_out_mux0001_cy<9> (Madd_imag_math_out_mux0001_cy<9>)
+     MUXCY:CI->O           1   0.064   0.000  Madd_imag_math_out_mux0001_cy<10> (Madd_imag_math_out_mux0001_cy<10>)
+     MUXCY:CI->O           1   0.064   0.000  Madd_imag_math_out_mux0001_cy<11> (Madd_imag_math_out_mux0001_cy<11>)
+     MUXCY:CI->O           1   0.064   0.000  Madd_imag_math_out_mux0001_cy<12> (Madd_imag_math_out_mux0001_cy<12>)
+     MUXCY:CI->O           0   0.064   0.000  Madd_imag_math_out_mux0001_cy<13> (Madd_imag_math_out_mux0001_cy<13>)
+     XORCY:CI->O           1   0.904   0.000  Madd_imag_math_out_mux0001_xor<14> (imag_math_out_mux0001<14>)
+     SRL16:D                   0.439          Mshreg_imag_unsig_14
+    ----------------------------------------
+    Total                     15.243ns (10.364ns logic, 4.879ns route)
+                                       (68.0% logic, 32.0% route)
+
+=========================================================================
+Timing constraint: Default OFFSET OUT AFTER for Clock 'clk'
+  Total number of paths / destination ports: 16 / 16
+-------------------------------------------------------------------------
+Offset:              7.165ns (Levels of Logic = 2)
+  Source:            your_instance_name/blk0000033f (FF)
+  Destination:       magnitude_out<15> (PAD)
+  Source Clock:      clk rising
+
+  Data Path: your_instance_name/blk0000033f to magnitude_out<15>
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FDRE:C->Q             1   0.720   0.801  blk0000033f (x_out<15>)
+     end scope: 'your_instance_name'
+     OBUF:I->O                 5.644          magnitude_out_15_OBUF (magnitude_out<15>)
+    ----------------------------------------
+    Total                      7.165ns (6.364ns logic, 0.801ns route)
+                                       (88.8% logic, 11.2% route)
+
+=========================================================================
 
 
-Total REAL time to Xst completion: 4.00 secs
-Total CPU time to Xst completion: 4.60 secs
+Total REAL time to Xst completion: 9.00 secs
+Total CPU time to Xst completion: 9.02 secs
  
 --> 
 
-Total memory usage is 255808 kilobytes
+Total memory usage is 274560 kilobytes
 
 Number of errors   :    0 (   0 filtered)
-Number of warnings :    5 (   0 filtered)
-Number of infos    :    0 (   0 filtered)
+Number of warnings :  194 (   0 filtered)
+Number of infos    :    1 (   0 filtered)
 

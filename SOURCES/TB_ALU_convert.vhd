@@ -44,7 +44,7 @@ ARCHITECTURE behavior OF TB_ALU_convert IS
          clk : IN  std_logic;
          real_in : IN  std_logic_vector(30 downto 0);
          imag_in : IN  std_logic_vector(30 downto 0);
-         magnitude_out : OUT  std_logic_vector(16 downto 0)
+         magnitude_out : OUT  std_logic_vector(15 downto 0)
         );
     END COMPONENT;
     
@@ -55,7 +55,7 @@ ARCHITECTURE behavior OF TB_ALU_convert IS
    signal imag_in : std_logic_vector(30 downto 0) := (others => '0');
 
  	--Outputs
-   signal magnitude_out : std_logic_vector(16 downto 0);
+   signal magnitude_out : std_logic_vector(15 downto 0);
 
    -- Clock period definitions
    constant clk_period : time := 10 ns;
@@ -86,8 +86,11 @@ BEGIN
    begin		
       -- hold reset state for 100 ns.
       wait for 100 ns;
-      real_in <= "1000000000000000000000000000001";
-      imag_in <= "0111111111111111111111111111111";
+      real_in <= "1000010000100000010000000000001";
+      imag_in <= "0111111100011111111111110011111";
+      wait for 20 ns;
+      real_in <= "1100010000100000010011100000001";
+      imag_in <= "0101111100011111110000010011111";
 
       wait for clk_period*10;
 
